@@ -14,7 +14,9 @@ def upload(request: HttpRequest):
     return JsonResponse({
         "market_cap": statistics_service.get_market_cap_info(),
         "stock_price": statistics_service.get_stock_price_info(),
-        "daily_loss_gain": statistics_service.get_loss_gain_info()
+        "daily_loss_gain": statistics_service.get_loss_gain_info(),
+        "total_cap_by_contry": statistics_service.get_companies_total_cap_by_country(),
+        "companies_count_by_contry": statistics_service.get_companies_count_by_country()
     })
     
 

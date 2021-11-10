@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, List
 from pandas import DataFrame
 import pandas
 
@@ -8,6 +8,7 @@ class StatisticsService:
     MARKET_CAP_COL_NAME = 'market_cap'
     STOCK_PRICE_COL_NAME = 'stock_price'
     DAILY_GAIN_COL_NAME = 'daily_gain'
+    COUNTRY_NAME_COL_NAME = 'country'
 
     _dataset: DataFrame
 
@@ -108,6 +109,20 @@ class StatisticsService:
                 "avg": avg_loss
             },
         }
+    
+    def get_companies_count_by_country(self) -> List:
+        groupping_result = self._get_count_in_groups(self._dataset, self.COUNTRY_NAME_COL_NAME)
+        result = []
+        for country_name, companies_count in groupping_result.items():
+            result.append({"country_name": country_name, "companies_count": companies_count})
+        return result
+
+    def get_companies_total_cap_by_country(self) -> List:
+        groupping_result = self._get_sum_in_groups(self._dataset, self.COUNTRY_NAME_COL_NAME, self.MARKET_CAP_COL_NAME)
+        result = []
+        for country_name, total_cap in groupping_result.items():
+            result.append({"country_name": country_name, "total_cap": total_cap})
+        return result
 
     def _get_max_value_index(self, 
             dataset: DataFrame, 
@@ -174,3 +189,21 @@ class StatisticsService:
                 count += 1
                 sum += row[col_name]
         return sum / count
+    
+    def _get_count_in_groups(self, dataset: DataFrame, group_by_col_name: str) -> Dict:
+        result = {}
+        for _, row in dataset.iterrows():
+            if row[group_by_col_name] in result:
+                result[row[group_by_col_name]] += 1
+            else:
+                result[row[group_by_col_name]] = 1
+        return result
+    
+    def _get_sum_in_groups(self, dataset: DataFrame, group_by_col_name: str, sum_by_col_name: str) -> Dict:
+        result = {}
+        for _, row in dataset.iterrows():
+            if row[group_by_col_name] in result:
+                result[row[group_by_col_name]] += row[sum_by_col_name]
+            else:
+                result[row[group_by_col_name]] = row[sum_by_col_name]
+        return result
