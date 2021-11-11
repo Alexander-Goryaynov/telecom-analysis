@@ -1,0 +1,18 @@
+<div class="w-100">
+    <div class="d-flex justify-content-center">
+        <div class="text-center">
+          <p class="file-input-label">
+            Выберите или перетащите файл с датасетом<sup>*</sup> формата .csv для анализа
+          </p>
+          <input id="dataset" name="dataset" type="file" accept=".csv"/>
+          <p class="dataset-description">
+            * Файл должен содержать столбцы: id (int),
+            company_name (str), company_code (str), market_cap (float),
+            stock_price (float), daily_gain (float), country (str)
+          </p>
+          <button class="btn btn-primary">
+            Анализировать
+          </button>
+        </div>
+    </div>
+</div>
