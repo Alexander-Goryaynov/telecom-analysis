@@ -1,1 +1,194 @@
+<div class="w-100">
+  <div class="results-title text-center text-white font-weight-bold">
+    Результаты анализа данных
+  </div>
+  <div class="bg-white space-between-paragraphs">
+    <p class="font-weight-bold ml-2 pt-2">
+      Рыночная капитализация компаний-поставщиков (млрд. долларов США)
+    </p>
 
+    <table class="table table-bordered table-hover">
+      <tbody>
+        <tr>
+          <td>
+            Максимум
+          </td>
+          <td>
+            276.76
+          </td>
+          <td>
+            Comcast
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Минимум
+          </td>
+          <td>
+            0.09
+          </td>
+          <td>
+            Vislink Technologies
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Медиана
+          </td>
+          <td>
+            8.62
+          </td>
+          <td>
+            Siena
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Среднее
+          </td>
+          <td>
+            27.3
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bg-white space-between-paragraphs">
+    <p class="font-weight-bold ml-2 pt-2">
+      Курс акций компаний-поставщиков (долларов США)
+    </p>
+    <table class="table table-bordered border-dark table-hover">
+      <tbody>
+      <tr>
+        <td>
+          Максимум
+        </td>
+        <td>
+          800.83
+        </td>
+        <td>
+          Charter Communications
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Минимум
+        </td>
+        <td>
+          0.04
+        </td>
+        <td>
+          Reliance Communications
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Медиана
+        </td>
+        <td>
+          9.72
+        </td>
+        <td>
+          Vodacom
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Среднее
+        </td>
+        <td>
+          31.97
+        </td>
+        <td>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bg-white space-between-paragraphs">
+    <p class="font-weight-bold ml-2 pt-2">
+      Изменение курса акций за последние 24 часа (в процентах)
+    </p>
+    <p class="font-weight-bold ml-2 pt-2">
+      Прирост:
+    </p>
+    <table class="table table-bordered border-dark table-hover">
+      <tbody>
+      <tr>
+        <td>
+          Максимальный
+        </td>
+        <td>
+          +9.48
+        </td>
+        <td>
+          SoftBank
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Средний
+        </td>
+        <td>
+          +1.88
+        </td>
+        <td>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <p class="font-weight-bold ml-2 pt-2">
+      Убыток:
+    </p>
+    <table class="table table-bordered border-dark table-hover">
+      <tbody>
+      <tr>
+        <td>
+          Максимальный
+        </td>
+        <td>
+          -23.30
+        </td>
+        <td>
+          XL Axiata
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Средний
+        </td>
+        <td>
+          -1.90
+        </td>
+        <td>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <canvas baseChart class="bg-white space-between-paragraphs"
+    [datasets]="countByCountryDataset"
+    [labels]="countByCountryLabels"
+    [chartType]="'bar'"
+    [options]="histogramOptions">
+  </canvas>
+
+  <canvas baseChart class="bg-white space-between-paragraphs"
+          [data]="capByCountryDataset"
+          [labels]="capByCountryLabels"
+          [chartType]="'pie'"
+          [legend]="true"
+          [options]="pieChartOptions">
+  </canvas>
+
+  <div class="text-center space-between-paragraphs">
+    <button class="btn btn-warning">
+      Загрузить новые данные
+    </button>
+  </div>
+</div>
