@@ -12,11 +12,11 @@ def upload(request: HttpRequest):
     file_path = _store_file(file_base64)
     statistics_service = StatisticsService(file_path)
     return JsonResponse({
-        "market_cap": statistics_service.get_market_cap_info(),
-        "stock_price": statistics_service.get_stock_price_info(),
-        "daily_loss_gain": statistics_service.get_loss_gain_info(),
-        "total_cap_by_contry": statistics_service.get_companies_total_cap_by_country(),
-        "companies_count_by_contry": statistics_service.get_companies_count_by_country()
+        "marketCap": statistics_service.get_market_cap_info(),
+        "stockPrice": statistics_service.get_stock_price_info(),
+        "dailyLossGain": statistics_service.get_loss_gain_info(),
+        "totalCapByContry": statistics_service.get_companies_total_cap_by_country(),
+        "companiesCountByCountry": statistics_service.get_companies_count_by_country()
     })
     
 

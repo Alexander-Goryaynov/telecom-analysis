@@ -34,15 +34,15 @@ class StatisticsService:
         return {
             "max": {
                 "value": max_cap, 
-                "company_name": max_company_name
+                "companyName": max_company_name
             },
             "min": {
                 "value": min_cap, 
-                "company_name": min_company_name
+                "companyName": min_company_name
             },
             "median": {
                 "value": median_cap, 
-                "company_name": median_company_name
+                "companyName": median_company_name
             },
             "avg": self._get_avg_value(self._dataset, self.MARKET_CAP_COL_NAME)             
         }
@@ -66,15 +66,15 @@ class StatisticsService:
         return {
             "max": {
                 "value": max_stock_price, 
-                "company_name": max_company_name
+                "companyName": max_company_name
             },
             "min": {
                 "value": min_stock_price, 
-                "company_name": min_company_name
+                "companyName": min_company_name
             },
             "median": {
                 "value": median_stock_price, 
-                "company_name": median_company_name
+                "companyName": median_company_name
             },
             "avg": self._get_avg_value(self._dataset, self.STOCK_PRICE_COL_NAME)             
         }
@@ -97,14 +97,14 @@ class StatisticsService:
             "gain": {
                 "max": {
                     "value": max_gain,
-                    "company_name": max_gain_company_name
+                    "companyName": max_gain_company_name
                 },
                 "avg": avg_gain
             },
             "loss": {
                 "max": {
                     "value": max_loss,
-                    "company_name": max_loss_company_name
+                    "companyName": max_loss_company_name
                 },
                 "avg": avg_loss
             },
@@ -114,14 +114,14 @@ class StatisticsService:
         groupping_result = self._get_count_in_groups(self._dataset, self.COUNTRY_NAME_COL_NAME)
         result = []
         for country_name, companies_count in groupping_result.items():
-            result.append({"country_name": country_name, "companies_count": companies_count})
+            result.append({"countryName": country_name, "companiesCount": companies_count})
         return result
 
     def get_companies_total_cap_by_country(self) -> List:
         groupping_result = self._get_sum_in_groups(self._dataset, self.COUNTRY_NAME_COL_NAME, self.MARKET_CAP_COL_NAME)
         result = []
         for country_name, total_cap in groupping_result.items():
-            result.append({"country_name": country_name, "total_cap": total_cap})
+            result.append({"countryName": country_name, "totalCap": total_cap})
         return result
 
     def _get_max_value_index(self, 
