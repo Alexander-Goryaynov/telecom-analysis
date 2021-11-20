@@ -1,4 +1,4 @@
-<div class="w-100">
+<div *ngIf="analysisResult !== undefined" class="w-100">
   <div class="results-title text-center text-white font-weight-bold">
     Результаты анализа данных
   </div>
@@ -14,10 +14,10 @@
             Максимум
           </td>
           <td>
-            276.76
+            {{analysisResult.marketCap.max.value | number: '1.2-2'}}
           </td>
           <td>
-            Comcast
+            {{analysisResult.marketCap.max.companyName}}
           </td>
         </tr>
         <tr>
@@ -25,10 +25,10 @@
             Минимум
           </td>
           <td>
-            0.09
+            {{analysisResult.marketCap.min.value | number: '1.2-2'}}
           </td>
           <td>
-            Vislink Technologies
+            {{analysisResult.marketCap.min.companyName}}
           </td>
         </tr>
         <tr>
@@ -36,10 +36,10 @@
             Медиана
           </td>
           <td>
-            8.62
+            {{analysisResult.marketCap.median.value | number: '1.2-2'}}
           </td>
           <td>
-            Siena
+            {{analysisResult.marketCap.median.companyName }}
           </td>
         </tr>
         <tr>
@@ -47,7 +47,7 @@
             Среднее
           </td>
           <td>
-            27.3
+            {{analysisResult.marketCap.avg | number: '1.2-2'}}
           </td>
           <td>
           </td>
@@ -67,10 +67,10 @@
           Максимум
         </td>
         <td>
-          800.83
+          {{analysisResult.stockPrice.max.value | number: '1.2-2'}}
         </td>
         <td>
-          Charter Communications
+          {{analysisResult.stockPrice.max.companyName}}
         </td>
       </tr>
       <tr>
@@ -78,10 +78,10 @@
           Минимум
         </td>
         <td>
-          0.04
+          {{analysisResult.stockPrice.min.value | number: '1.2-2'}}
         </td>
         <td>
-          Reliance Communications
+          {{analysisResult.stockPrice.min.companyName}}
         </td>
       </tr>
       <tr>
@@ -89,10 +89,10 @@
           Медиана
         </td>
         <td>
-          9.72
+          {{analysisResult.stockPrice.median.value | number: '1.2-2'}}
         </td>
         <td>
-          Vodacom
+          {{analysisResult.stockPrice.median.companyName}}
         </td>
       </tr>
       <tr>
@@ -100,7 +100,7 @@
           Среднее
         </td>
         <td>
-          31.97
+          {{analysisResult.stockPrice.avg | number: '1.2-2'}}
         </td>
         <td>
         </td>
@@ -123,10 +123,10 @@
           Максимальный
         </td>
         <td>
-          +9.48
+          +{{analysisResult.dailyLossGain.gain.max.value | number: '1.2-2'}}
         </td>
         <td>
-          SoftBank
+          {{analysisResult.dailyLossGain.gain.max.companyName}}
         </td>
       </tr>
       <tr>
@@ -134,7 +134,7 @@
           Средний
         </td>
         <td>
-          +1.88
+          +{{analysisResult.dailyLossGain.gain.avg | number: '1.2-2'}}
         </td>
         <td>
         </td>
@@ -151,10 +151,10 @@
           Максимальный
         </td>
         <td>
-          -23.30
+          {{analysisResult.dailyLossGain.loss.max.value | number: '1.2-2'}}
         </td>
         <td>
-          XL Axiata
+          {{analysisResult.dailyLossGain.loss.max.companyName}}
         </td>
       </tr>
       <tr>
@@ -162,7 +162,7 @@
           Средний
         </td>
         <td>
-          -1.90
+          {{analysisResult.dailyLossGain.loss.avg | number: '1.2-2'}}
         </td>
         <td>
         </td>
@@ -187,7 +187,7 @@
   </canvas>
 
   <div class="text-center space-between-paragraphs">
-    <button class="btn btn-warning">
+    <button class="btn btn-warning" (click)="onNewAnalysisBtnClick()">
       Загрузить новые данные
     </button>
   </div>

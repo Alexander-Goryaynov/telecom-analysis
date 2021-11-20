@@ -8,14 +8,15 @@ from api.services.statistics_service import StatisticsService
 
 @csrf_exempt
 def upload(request: HttpRequest):
-    file_base64 = json.loads(request.body)['dataset_base64']
+    file_base64 = json.loads(request.body)['datasetBase64']
+    file_base64 = file_base64.split(',')[1]
     file_path = _store_file(file_base64)
     statistics_service = StatisticsService(file_path)
     return JsonResponse({
         "marketCap": statistics_service.get_market_cap_info(),
         "stockPrice": statistics_service.get_stock_price_info(),
         "dailyLossGain": statistics_service.get_loss_gain_info(),
-        "totalCapByContry": statistics_service.get_companies_total_cap_by_country(),
+        "totalCapByCountry": statistics_service.get_companies_total_cap_by_country(),
         "companiesCountByCountry": statistics_service.get_companies_count_by_country()
     })
     

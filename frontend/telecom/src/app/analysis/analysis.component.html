@@ -14,8 +14,20 @@
     </div>
   </div>
   <div class="content-area px-2 py-4">
-<!--    <app-file-upload></app-file-upload>-->
-    <app-report></app-report>
+    <app-file-upload
+      [hidden]="isFileUploadHidden"
+      (fileUpload)="onFileUpload($event)">
+    </app-file-upload>
+    <app-report #reportComponent
+      [hidden]="isReportHidden"
+      (requestNewAnalysis)="onNewAnalysisRequest()">
+    </app-report>
   </div>
 </div>
 <div class="background h-25"></div>
+<swal
+  #serverErrorSweetAlert
+  title="Ошибка сервера"
+  text="Произошла ошибка при анализе данных на сервере"
+  icon="error">
+</swal>

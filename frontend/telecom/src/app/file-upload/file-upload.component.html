@@ -10,9 +10,15 @@
             company_name (str), company_code (str), market_cap (float),
             stock_price (float), daily_gain (float), country (str)
           </p>
-          <button class="btn btn-primary">
+          <button class="btn btn-primary" (click)="onBtnAnalyseClick()">
             Анализировать
           </button>
         </div>
     </div>
 </div>
+<swal
+  #emptyFileInputSweetAlert
+  title="Не прикреплён файл с данными для анализа"
+  text="Ознакомьтесь с требованиями и прикрепите файл в поле ввода"
+  icon="warning">
+</swal>

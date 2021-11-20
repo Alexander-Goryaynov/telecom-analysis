@@ -6,6 +6,8 @@ import { AnalysisComponent } from './analysis/analysis.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { ReportComponent } from './report/report.component';
 import { ChartsModule } from 'ng2-charts';
+import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { ChartsModule } from 'ng2-charts';
     FileUploadComponent,
     ReportComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ChartsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ChartsModule,
+        HttpClientModule,
+        SweetAlert2Module.forRoot()
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
