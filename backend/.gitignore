@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+telecom/api/storage/clusterization_result.png
 
 # C extensions
 *.so

@@ -17,7 +17,8 @@ def upload(request: HttpRequest):
         "stockPrice": statistics_service.get_stock_price_info(),
         "dailyLossGain": statistics_service.get_loss_gain_info(),
         "totalCapByCountry": statistics_service.get_companies_total_cap_by_country(),
-        "companiesCountByCountry": statistics_service.get_companies_count_by_country()
+        "companiesCountByCountry": statistics_service.get_companies_count_by_country(),
+        "clusterizationResult": statistics_service.get_companies_clusters()
     })
     
 

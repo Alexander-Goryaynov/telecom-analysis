@@ -1,6 +1,12 @@
 from typing import Dict, List
-from pandas import DataFrame
-import pandas
+from pandas import DataFrame, read_csv
+from sklearn.cluster import KMeans
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+from seaborn import scatterplot, color_palette
+from base64 import b64encode
+import os
 
 class StatisticsService:
 
@@ -13,7 +19,7 @@ class StatisticsService:
     _dataset: DataFrame
 
     def __init__(self, dataset_path: str) -> None:
-        self._dataset = pandas.read_csv(dataset_path)
+        self._dataset = read_csv(dataset_path)
 
     def get_market_cap_info(self) -> Dict:
         #
@@ -122,6 +128,34 @@ class StatisticsService:
         result = []
         for country_name, total_cap in groupping_result.items():
             result.append({"countryName": country_name, "totalCap": total_cap})
+        return result
+
+    def get_companies_clusters(self) -> Dict:
+        plot_image_path = r'..\storage\clusterization_result.png'
+        current_folder = os.path.dirname(os.path.abspath(__file__))
+        destination_file = os.path.join(current_folder, plot_image_path)
+        if (os.path.exists(destination_file)):
+            os.remove(destination_file)
+        kmeans_input_data = self._dataset[[
+            self.MARKET_CAP_COL_NAME, 
+            self.DAILY_GAIN_COL_NAME
+        ]]
+        kmeans = KMeans(n_clusters=3, random_state=0).fit(kmeans_input_data)
+        scatterplot(
+            x=self._dataset.market_cap,
+            y=self._dataset.daily_gain,
+            hue=kmeans.labels_,
+            palette=color_palette("colorblind", n_colors=3),
+            legend=None,
+        )
+        estimator = make_pipeline(StandardScaler(), kmeans).fit(kmeans_input_data)
+        plt.savefig(destination_file)
+        plt.close()
+        plotBase64 = "data:image/png;base64," + b64encode(open(destination_file, "rb").read()).decode()
+        result = {
+            "plotBase64": plotBase64,
+            "inertiaValue": estimator[-1].inertia_
+        }
         return result
 
     def _get_max_value_index(self, 

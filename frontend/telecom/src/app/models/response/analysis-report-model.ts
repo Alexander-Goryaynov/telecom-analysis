@@ -25,4 +25,5 @@ export class AnalysisReportModel {
   };
   totalCapByCountry: {countryName: string; totalCap: number}[];
   companiesCountByCountry: {countryName: string; companiesCount: number}[];
+  clusterizationResult: { plotBase64: string, inertiaValue: number };
 }

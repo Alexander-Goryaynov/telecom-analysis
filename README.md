@@ -6,7 +6,19 @@
 
 Пример CSV-файла
 
-![](https://sun9-13.userapi.com/impg/CmAP3-j6yDAyj_rERx2SkQF9RnXbJf_oKLyS9A/PXXm4MKW5UM.jpg?size=1177x323&quality=96&sign=b7a57bd285aec1caa4f73705cc10f8db&type=album)
+| id | company_name | company_code | market_cap | stock_price | daily_gain | country |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0 | Comcast | CMCSA | 276.76 | 60.30 | -2.30 | USA | 
+| 1 | Verizon | VZ | 226.96 | 54.82 | -1.10 | USA | 
+| 2 | AT&T | T | 195.77 | 27.42 | -0.51 | USA | 
+| 3 | T-Mobile US | TMUS | 167.81 | 134.47 | -1.12 | USA | 
+| 4 | Charter Communications | CHTR | 147.21 | 800.83 | -1.29 | USA | 
+| 5 | American Tower | AMT | 136.18 | 299.22 | -0.92 | USA | 
+| 6 | China Mobile | 0941.HK | 128.13 | 6.26 | -1.62 | China | 
+| 7 | Nippon Telegraph & Telephone | NPPXF | 107.08 | 29.61 | 3.89 | Japan | 
+| 8 | SoftBank | SFTBF | 106.81 | 62.35 | 9.48 | Japan | 
+| 9 | Deutsche Telekom | DTE.DE | 100.64 | 21.22 | -0.13 | Germany | 
+| 10 | Crown Castle | CCI | 84.51 | 195.54 | -1.49 | USA | 
 
 ![](https://sun9-74.userapi.com/impg/UQOMKDQIhY2Q-AaEWrsBo7vNkPZSC_09fl9UFg/HA9ZMSRy_9E.jpg?size=1344x624&quality=96&sign=2368380b1df81912f2244363075087ef&type=album)
 
@@ -18,9 +30,11 @@
 
 ![](https://sun9-8.userapi.com/impg/VyVfD-4-r8LGj4fwqlyqwsnSrKulkJ9yjV79Aw/e2yBl93C8sk.jpg?size=1339x615&quality=96&sign=309cfba9b39aaab7aa75881415fc75a2&type=album)
 
+![](https://sun9-2.userapi.com/impg/0Sz6GYJPyxxEpHf5QHi4DdlQBh2ezztybIfLoA/LhEsZhivyco.jpg?size=1337x617&quality=96&sign=effd35934547e79d4294f7e7693150c5&type=album)
+
 ## Пример ответа API
 
-```json
+```jsonc
 {
     "marketCap": {
         "max": {
@@ -81,6 +95,10 @@
             "companiesCount": 29
         },
         //
-    ]
+    ],
+    "clusterizationResult": {
+        "plotBase64": "data:image/png;base64,CODE",
+        "inertiaValue": 70.6
+    }
 }
 ```
